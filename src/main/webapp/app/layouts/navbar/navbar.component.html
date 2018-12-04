@@ -1,0 +1,27 @@
+<nav class="navbar navbar-dark navbar-expand-md jh-navbar">
+    <div class="jh-logo-container float-left">
+
+        <a class="navbar-brand logo float-left" routerLink="/" (click)="collapseNavbar()">
+            <span class="navbar-title">Assignment</span>
+        </a>
+    </div>
+    <div class="navbar-collapse collapse" id="navbarResponsive" [ngbCollapse]="isNavbarCollapsed" [ngSwitch]="isAuthenticated()">
+        <ul class="navbar-nav ml-auto">
+
+            <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <span class="nav-link" *ngSwitchCase="true">
+                    <button (click)="logout()" id="logout">
+                        <span>Sign out</span>
+                    </button>
+                </span>
+                <span class="nav-link" *ngSwitchCase="false">
+                    <button (click)="login()" id="login">
+                        <span>Sign in</span>
+                    </button>
+                </span>
+
+            </li>
+
+        </ul>
+    </div>
+</nav>

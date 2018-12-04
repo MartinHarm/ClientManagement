@@ -1,0 +1,4 @@
+login;password_hash;first_name;last_name;country_code;email;address;image_url;activated;lang_key;created_by;last_modified_by
+kasutaja1;$2a$10$BwhSbJTjZtU5ytCpqtbTx.5p5fzSel25bxlY63w9.e8GaYTudQWt2;Kasutaja1;Kasutaja1;EE;kasutaja1@codemaster.ee;;;true;en;root;root
+kasutaja2;$2a$10$KITHJQ0IejtcdoT1IO3AzuRvHJLLkPBjlVxUSHUIVDuqxJg0kmQAu;Kasutaja2;Kasutaja2;FI;kasutaja2@codemaster.ee;;;true;en;root;root
+kasutaja3;$2a$10$0c1uWJ2d2z81vrTDgb/zleOd4tnWcNoeb7fhEjhzUA3UuZ11j.9Iy;Kasutaja3;Kasutaja3;SE;kasutaja3@codemaster.ee;;;true;en;root;root

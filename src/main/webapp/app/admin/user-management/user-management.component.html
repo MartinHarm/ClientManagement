@@ -1,0 +1,38 @@
+<div>
+    <h1 class="py-5 text-center">Clients</h1>
+    <h2>
+        <button class="btn btn-primary float-left jh-create-entity" [routerLink]="['./new']">
+            <span>Add client</span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="table-responsive" *ngIf="users">
+        <table class="table">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+                <th>#</th>
+                <th>First</th>
+                <th>Last</th>
+                <th>Username</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody *ngIf ="users">
+            <tr *ngFor="let user of users; trackBy: trackIdentity">
+                <td class="heavy-weight-text">{{user.id}}</td>
+                <td>{{user.firstName}}</td>
+                <td>{{user.lastName}}</td>
+                <td>{{user.login}}</td>
+                <td class="text-center">
+                    <button type="submit"
+                            [routerLink]="['./', user.login, 'edit']"
+                            queryParamsHandling="merge"
+                            class="btn btn-primary btn-sm">
+                        <span class="d-none d-md-inline">Edit client</span>
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

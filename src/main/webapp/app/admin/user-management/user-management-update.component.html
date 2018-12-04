@@ -1,0 +1,125 @@
+<div class="row justify-content-center">
+    <div class="col-10">
+        <form name="editForm" role="form" (ngSubmit)="save()" #editForm="ngForm">
+            <div class="row justify-content-center">
+                <div class="col-8">
+                    <div class="col-md-12 order-md-1">
+                        <h2 id="myUserLabel" class="heavy-weight-text py-5 text-center">
+                            {{user.id !== null ? "Edit" : "Add"}} client
+                        </h2>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="firstName">First name</label>
+                                    <input type="text" class="form-control" name="firstName" id="firstName" #firstNameInput="ngModel"
+                                           [(ngModel)]="user.firstName" maxlength="50">
+                                    <div *ngIf="firstNameInput.dirty && firstNameInput.invalid">
+                                        <small class="form-text text-danger"*ngIf="firstNameInput.errors.maxlength">
+                                            This field cannot be longer than 50 characters.
+                                        </small>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label for="lastName">Last name</label>
+                                    <input type="text" class="form-control" name="lastName" id="lastName" #lastNameInput="ngModel"
+                                           [(ngModel)]="user.lastName" maxlength="50">
+                                    <div *ngIf="lastNameInput.dirty && lastNameInput.invalid">
+                                        <small class="form-text text-danger"*ngIf="lastNameInput.errors.maxlength">
+                                            This field cannot be longer than 50 characters.
+                                        </small>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="mb-3">
+
+                                <label for="username">Username</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="username" name="username" #usernameInput="ngModel" placeholder="Username"
+                                           [(ngModel)]="user.login" required minlength="1" maxlength="50" pattern="^[_.@A-Za-z0-9-]*$">
+                                </div>
+
+                                <div *ngIf="usernameInput.dirty && usernameInput.invalid">
+                                    <small class="form-text text-danger"
+                                           *ngIf="usrnameInput.errors.required">
+                                        This field is required.
+                                    </small>
+
+                                    <small class="form-text text-danger"
+                                           *ngIf="usernameInput.errors.maxlength">
+                                        This field cannot be longer than 50 characters.
+                                    </small>
+
+                                    <small class="form-text text-danger"
+                                           *ngIf="usernameInput.errors.pattern">
+                                        This field can only contain letters, digits and e-mail addresses.
+                                    </small>
+                                </div>
+
+                            </div>
+
+                            <div class="mb-3">
+
+                                <label for="email">Email <span class="text-muted">(Optional)</span></label>
+                                <input type="email" id="email" class="form-control" name="email" placeholder="you@example.com" #emailInput="ngModel"
+                                       [(ngModel)]="user.email" maxlength="254" email>
+
+                                <div *ngIf="emailInput.dirty && emailInput.invalid">
+                                    <small class="form-text text-danger"
+                                           *ngIf="emailInput.errors.maxlength">
+                                        This field cannot be longer than 100 characters.
+                                    </small>
+
+                                    <small class="form-text text-danger"
+                                           *ngIf="emailInput.errors.email">
+                                        Your email is invalid.
+                                    </small>
+                                </div>
+
+                            </div>
+
+                            <div class="mb-3">
+
+                                <label for="address">Address</label>
+                                <input type="text" id="address" class="form-control" name="address" placeholder="1234 Main St" #addressInput="ngModel"
+                                       [(ngModel)]="user.address" minlength="5" maxlength="256">
+
+                                <div *ngIf="addressInput.dirty && addressInput.invalid">
+                                    <small class="form-text text-danger" *ngIf="addressInput.errors.required">
+                                        This field is required.
+                                    </small>
+
+                                    <small class="form-text text-danger"
+                                           *ngIf="addressInput.errors.maxlength">
+                                        This field cannot be longer than 100 characters.
+                                    </small>
+
+                                    <small class="form-text text-danger"
+                                           *ngIf="addressInput.errors.minlength">
+                                        This field is required to be at least 5 characters.
+                                    </small>
+                                </div>
+
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="country">Country</label>
+
+                                <select [(ngModel)]="selectedCountryCode" class="custom-select d-block w-100" name="country" id="country" title="Country">
+                                    <option value="" disabled>Choose...</option>
+                                    <option *ngFor="let cont of countries"  [ngValue]="cont.countryCode">{{cont.countryName}}</option>
+                                </select>
+
+                            </div>
+                            <hr class="mb-4">
+
+                            <button class="btn btn-primary btn-lg btn-block" [disabled]="editForm.form.invalid || isSaving" type="submit">Add Client</button>
+
+                            <button class="btn btn-secondary btn-lg btn-block" (click)="previousState()" type="button"><span>Cancel</span></button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
